@@ -1,9 +1,5 @@
 function Home() {
-  return (
-    <div className="bg-red-100">
-      <h1>Home</h1>
-    </div>
-  );
+  return <h1>Home</h1>;
 }
 
 export default Home;
