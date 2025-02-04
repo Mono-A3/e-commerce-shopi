@@ -1,9 +1,18 @@
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../Context';
+
 const ProductDetail = () => {
+  const context = useContext(ShoppingCartContext);
+
   return (
-    <aside className='top-[68px] w-[360px] h-[calc(100vh-68px)] flex flex-col fixed right-0 border border-black rounded-lg bg-white'>
+    <aside
+      className={`${
+        context.isProductDetailOpen ? 'flex' : 'hidden'
+      } top-[68px] w-[360px] h-[calc(100vh-68px)] flex-col fixed right-0 border border-black rounded-lg bg-white`}
+    >
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>Detail</h2>
-        <div className='cursor-pointer'>
+        <div className='cursor-pointer' onClick={context.closeProductDetail}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
