@@ -6,7 +6,7 @@ Este proyecto es el resultado del aprendizaje adquirido en el **"Curso de React.
 
 ## 💡 Descripción
 
-**"e-commerce-shopi"** es una aplicación de comercio electrónico que combina un frontend dinámico con React.js y Vite.js, y un backend desarrollado en Node.js. La aplicación utiliza **Tailwind CSS** para estilos, ofreciendo una interfaz moderna. Entre las funcionalidades implementadas se incluyen:
+Aplicación fullstack de comercio electrónico diseñada para facilitar la navegación, búsqueda y compra de productos en línea. Desarrollada con React.js y Vite.js para un frontend rápido y dinámico, empleando Tailwind CSS para una interfaz moderna y responsiva. Consume datos desde la Fake Store API de Platzi para simular un catálogo real de productos. El backend está construido con Node.js, estructurado bajo principios modulares que permiten escalar funcionalidades fácilmente. Entre las funcionalidades implementadas se incluyen:
 
 - Visualización y navegación por el catálogo de productos.
 - Gestión del carrito de compras.
