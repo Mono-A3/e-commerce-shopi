@@ -1,5 +1,5 @@
 import { useContext, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { ShoppingCartContext } from '../../Context';
 import Layout from '../../Components/Layout';
 
@@ -17,6 +17,14 @@ function SignIn() {
   const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
 
+  const handleSignIn = () => {
+    const stringifiedStringOut = JSON.stringify(false);
+    localStorage.setItem('sign-out', stringifiedStringOut);
+    context.setSignOut(false);
+
+    return <Navigate replace to={'/'} />;
+  };
+
   const createAnAccount = () => {
     const formData = new FormData(form.current);
     const data = {
@@ -24,8 +32,6 @@ function SignIn() {
       email: formData.get('email'),
       password: formData.get('password'),
     };
-
-    console.log('data', data);
   };
 
   const renderLogIn = () => {
