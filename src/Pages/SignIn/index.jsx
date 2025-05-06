@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCartContext } from '../../Context';
 import Layout from '../../Components/Layout';
@@ -6,6 +6,7 @@ import Layout from '../../Components/Layout';
 function SignIn() {
   const context = useContext(ShoppingCartContext);
   const [view, setView] = useState('user-info');
+  const form = useRef(null);
 
   //Account
   const account = localStorage.getItem('account');
@@ -15,6 +16,17 @@ function SignIn() {
   const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
   const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
+  const createAnAccount = () => {
+    const formData = new FormData(form.current);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
+
+    console.log('data', data);
+  };
 
   const renderLogIn = () => {
     return (
@@ -56,7 +68,7 @@ function SignIn() {
 
   const renderCreateUserInfo = () => {
     return (
-      <form className='flex flex-col gap-4 w-80'>
+      <form ref={form} className='flex flex-col gap-4 w-80'>
         <div className='flex flex-col gap-1'>
           <label htmlFor='name'>Your name:</label>
           <input
@@ -92,7 +104,7 @@ function SignIn() {
           />
         </div>
         <Link to='/'>
-          <button className='bg-black text-white w-full rounded-lg py-3' onClick={() => createAccount()}>
+          <button className='bg-black text-white w-full rounded-lg py-3' onClick={() => createAnAccount()}>
             Create
           </button>
         </Link>
