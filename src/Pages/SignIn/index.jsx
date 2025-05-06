@@ -32,6 +32,14 @@ function SignIn() {
       email: formData.get('email'),
       password: formData.get('password'),
     };
+
+    // Create account
+    const stringifiedAccount = JSON.stringify(data);
+    localStorage.setItem('account', stringifiedAccount);
+    context.setAccount(data);
+
+    // Sign In
+    handleSignIn();
   };
 
   const renderLogIn = () => {
@@ -49,6 +57,7 @@ function SignIn() {
         <Link to='/'>
           <button
             className='bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mt-4 mb-2 cursor-pointer'
+            onClick={() => handleSignIn()}
             disabled={!hasUserAnAccount}
           >
             Log in
