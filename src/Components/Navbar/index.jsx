@@ -17,8 +17,49 @@ const Navbar = () => {
     context.setSignOut(true);
   };
 
+  const renderView = () => {
+    if (isUserSignOut) {
+      return (
+        <li>
+          <NavLink
+            to='/sign-in'
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => handleSignOut()}
+          >
+            Sign out
+          </NavLink>
+        </li>
+      );
+    } else {
+      return (
+        <>
+          <li className='text-black/60'>teff@platzi.com</li>
+          <li>
+            <NavLink to='/my-orders' className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+              My Orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/my-account' className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+              My Account
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/sign-in'
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => handleSignOut()}
+            >
+              Sign out
+            </NavLink>
+          </li>
+        </>
+      );
+    }
+  };
+
   return (
-    <nav className='flex justify-between items-center fixe z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
           <NavLink to='/'>Shopi</NavLink>
@@ -26,8 +67,8 @@ const Navbar = () => {
         <li>
           <NavLink
             to='/'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => context.setSearchByCategory()}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             All
           </NavLink>
@@ -35,8 +76,8 @@ const Navbar = () => {
         <li>
           <NavLink
             to='/clothes'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => context.setSearchByCategory('clothes')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Clothes
           </NavLink>
@@ -44,8 +85,8 @@ const Navbar = () => {
         <li>
           <NavLink
             to='/electronics'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => context.setSearchByCategory('electronics')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Electronics
           </NavLink>
@@ -53,52 +94,33 @@ const Navbar = () => {
         <li>
           <NavLink
             to='/furnitures'
+            onClick={() => context.setSearchByCategory('furnitures')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => context.setSearchByCategory('furniture')}
           >
             Furnitures
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/shoes'
+            to='/toys'
+            onClick={() => context.setSearchByCategory('toys')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => context.setSearchByCategory('shoes')}
           >
-            Shoes
+            Toys
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/miscellaneous'
+            to='/others'
+            onClick={() => context.setSearchByCategory('others')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => context.setSearchByCategory('miscellaneous')}
           >
-            Miscellaneous
+            Others
           </NavLink>
         </li>
       </ul>
       <ul className='flex items-center gap-3'>
-        <li className='text-black/60'>aaraqueamaya397@gmail.com</li>
-        <li>
-          <NavLink to='/my-orders' className={({ isActive }) => (isActive ? activeStyle : undefined)}>
-            My Orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/my-account' className={({ isActive }) => (isActive ? activeStyle : undefined)}>
-            My Account
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/sign-in'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => handleSignOut()}
-          >
-            Sign Out
-          </NavLink>
-        </li>
+        {renderView()}
         <li className='flex items-center cursor-pointer'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
