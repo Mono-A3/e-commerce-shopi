@@ -54,7 +54,51 @@ function SignIn() {
     );
   };
 
-  const renderCreateUserInfo = () => {};
+  const renderCreateUserInfo = () => {
+    return (
+      <form className='flex flex-col gap-4 w-80'>
+        <div className='flex flex-col gap-1'>
+          <label htmlFor='name'>Your name:</label>
+          <input
+            type='text'
+            id='name'
+            defaultValue={parsedAccount?.name}
+            placeholder='Andres'
+            className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4'
+          />
+        </div>
+
+        <div className='flex flex-col gap-1'>
+          <label htmlFor='email'>Your email:</label>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            defaultValue={parsedAccount?.email}
+            placeholder='hi@gmail.com'
+            className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4'
+          />
+        </div>
+
+        <div className='flex flex-col gap-1'>
+          <label htmlFor='password'>Your password:</label>
+          <input
+            type='password'
+            id='password'
+            name='password'
+            defaultValue={parsedAccount?.password}
+            placeholder='********'
+            className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4'
+          />
+        </div>
+        <Link to='/'>
+          <button className='bg-black text-white w-full rounded-lg py-3' onClick={() => createAccount()}>
+            Create
+          </button>
+        </Link>
+      </form>
+    );
+  };
 
   const renderView = () => (view === 'create-user-info' ? renderCreateUserInfo() : renderLogIn());
 
