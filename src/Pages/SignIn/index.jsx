@@ -44,6 +44,9 @@ function SignIn() {
         <button
           className='border border-black disabled:text-black/40 disabled:border-black/40 rounded-lg mt-6 py-3 cursor-pointer'
           disabled={hasUserAnAccount}
+          onClick={() => {
+            setView('create-user-info');
+          }}
         >
           Sign up
         </button>
