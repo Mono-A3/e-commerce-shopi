@@ -31,7 +31,7 @@ const Navbar = () => {
     if (hasUserAnAccount && !isUserSignOut) {
       return (
         <>
-          <li className='text-black/60'>teff@platzi.com</li>
+          <li className='text-black/60'>{parsedAccount?.email}</li>
           <li>
             <NavLink to='/my-orders' className={({ isActive }) => (isActive ? activeStyle : undefined)}>
               My Orders
